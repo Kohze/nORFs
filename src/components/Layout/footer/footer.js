@@ -1,194 +1,52 @@
 'use client'
+
 import Link from 'next/link'
-import { navigation } from './config'
-import { useState } from 'react'
-import { useToast } from '@/components/UI/use-toast'
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Data', href: '/data' },
+  { name: 'API', href: '/api' },
+  { name: 'Methods', href: '/methods' },
+  { name: 'About', href: '/about' },
+]
 
 export function Footer() {
-  const [email, setEmail] = useState('')
-  const { toast } = useToast()
-
-  const handleSubmitEmail = async (e) => {
-    e.preventDefault()
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        body: JSON.stringify({
-          email: email,
-        }),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      })
-      console.log(response)
-      if (response.ok) {
-        console.log('succesfull')
-        toast({
-          title: 'Success',
-          description: 'Subscription successful!',
-        })
-        setEmail('')
-      } else {
-        console.log('failure')
-        toast({
-          title: 'Error',
-          description: 'Subscription failed. Please try again.',
-        })
-      }
-    } catch (error) {
-      console.log(error)
-      toast({
-        title: 'Error',
-        description: 'An error occurred. Please try again.',
-      })
-    }
-  }
   return (
     <footer className="bg-gray-900" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <img
-            className="h-7"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-            alt="Company name"
-          />
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Solutions
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {navigation.solutions.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Support
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {navigation.support.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Company
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {navigation.company.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Legal
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+      <h2 id="footer-heading" className="sr-only">Footer</h2>
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-12 lg:px-8 lg:pt-16">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="text-2xl font-bold text-white mb-8 md:mb-0">
+            nORFs<span className="text-blue-400">.org</span>
           </div>
-        </div>
-        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
-          <div>
-            <h3 className="text-sm font-semibold leading-6 text-white">
-              Subscribe to our newsletter
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-gray-300">
-              The latest news, articles, and resources, sent to your inbox
-              weekly.
-            </p>
-          </div>
-          <form
-            onSubmit={handleSubmitEmail}
-            className="mt-6 sm:flex sm:max-w-md lg:mt-0 "
-          >
-            <label htmlFor="email-address" className="sr-only">
-              Email address
-            </label>
-            <div className=" min-w-0 inline-flex justify-start ring-1 ring-inset ring-white/10 border-0 bg-white/5 rounded-md focus-within:ring-2 focus-within:ring-indigo-500">
-              <input
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                }}
-                required
-                className=" bg-transparent border-0 focus:outline-none focus:ring-0 m-2 text-base text-white shadow-sm  placeholder:text-gray-500  sm:w-56 sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
-              />
-
-              <button
-                type="submit"
-                onClick={() => console.log('clicked', email)}
-                className=" rounded-md bg-indigo-500 m-2 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div>
-        <div className="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
-          <div className="flex space-x-6 md:order-2">
-            {navigation.social.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-500 hover:text-gray-400"
-              >
-                <span className="sr-only">{item.name}</span>
-                <item.icon className="h-6 w-6" aria-hidden="true" />
-              </Link>
+          <nav className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-5">
+            {navigation.map((item) => (
+              <div key={item.name}>
+                <Link
+                  href={item.href}
+                  className="text-sm font-semibold leading-6 text-white hover:text-gray-300"
+                >
+                  {item.name}
+                </Link>
+              </div>
             ))}
-          </div>
-          <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">
-            &copy; 2020 Your Company, Inc. All rights reserved.
+          </nav>
+        </div>
+        <div className="mt-8 border-t border-white/10 pt-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between">
+          <p className="mt-8 md:mt-0 text-xs leading-5 text-gray-400">
+            &copy; {new Date().getFullYear()} nORFs.org. All rights reserved.
           </p>
+          <div className="flex justify-center md:justify-end">
+            <Link
+              href="https://github.com/kohze/nORFs"
+              className="text-gray-500 hover:text-gray-400"
+            >
+              <span className="sr-only">GitHub</span>
+              <svg className="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,29 +1,29 @@
-import { MessagesSquare, Heart, PenSquare, Trash2 } from 'lucide-react'
+import { Database, Search, Code, FileText } from 'lucide-react'
 
 const features = [
   {
-    name: 'Spam report',
+    name: 'Comprehensive nORF Database',
     description:
-      'Autem reprehenderit aut debitis ut. Officiis harum omnis placeat blanditiis delectus sint vel et voluptatum. Labore asperiores non corporis molestiae.',
-    icon: Trash2,
+      'Access a vast collection of non-canonical Open Reading Frames (nORFs) data, including gene IDs, sequences, and genomic locations. Our database is regularly updated to provide the most current information.',
+    icon: Database,
   },
   {
-    name: 'Compose in markdown',
+    name: 'Advanced Search Functionality',
     description:
-      'Illum et aut inventore. Ut et dignissimos quasi. Omnis saepe dolorum. Hic autem fugiat. Voluptatem officiis necessitatibus est.',
-    icon: PenSquare,
+      'Utilize our powerful search tool to quickly find specific nORFs based on various criteria such as gene ID, start and end positions, or sequence features. Efficiently navigate through the extensive dataset.',
+    icon: Search,
   },
   {
-    name: 'Email commenting',
+    name: 'API Access',
     description:
-      'Commodi quam quo. In quasi mollitia optio voluptate et est reiciendis. Ut et sunt id officiis vitae perspiciatis. Et accusantium sapiente.',
-    icon: MessagesSquare,
+      'Integrate nORFs.org data directly into your research workflow with our comprehensive API. Programmatically access and analyze nORF information to enhance your bioinformatics projects.',
+    icon: Code,
   },
   {
-    name: 'Customer connections',
+    name: 'Detailed Methods Documentation',
     description:
-      'Deserunt corrupti praesentium quo vel cupiditate est occaecati ad. Aperiam libero modi similique iure praesentium facilis quo cumque quibusdam.',
-    icon: Heart,
+      'Understand the methodologies behind our nORF identification and classification processes. Access in-depth documentation on our data curation, analysis techniques, and quality control measures.',
+    icon: FileText,
   },
 ]
 
@@ -33,7 +33,7 @@ export function Features() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Stay on top of customer support
+            Our Features
           </h2>
           <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2">
             {features.map((feature) => (
