@@ -11,18 +11,11 @@ by Matthew D.C. Neville, Robin Kohze, et al.
 - Firebase/Supabase
 - Tailwind CSS
 - Radix UI
-- HubSpot API
 
 ## Quick Start
 1. Install dependencies: `yarn install`
 2. Set up environment variables
 3. Run development server: `yarn dev`
-
-## Key Features
-- Authentication (Firebase/Supabase)
-- Database integration
-- Newsletter signup (HubSpot)
-- Responsive UI components (ShadCn)
 
 ## Deployment
 Deploy on Vercel for optimal performance.
