@@ -54,7 +54,7 @@ function useScript(src) {
 
 export default function DallianceViewer({ norfData }) {
   const status = useScript(
-    "http://www.biodalliance.org/release-0.13/dalliance-compiled.js"
+    "https://www.biodalliance.org/release-0.13/dalliance-compiled.js"
   );
 
   const scriptStr = `
