@@ -101,14 +101,14 @@ export default function NorfDetail({ params }) {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">nORF Details: {norfData.gene_id}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">nORF Id: {norfData.gene_id}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-xl font-semibold mb-4">General Information</h3>
               <dl className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
                 {Object.entries(norfData)
-                  .filter(([key]) => key !== 'AA_seq' && key !== 'pdb_url' && key !== 'id')
+                  .filter(([key]) => key !== 'AA_seq' && key !== 'pdb_url' && key !== 'id' && key !== 'gene_id')
                   .map(([key, value]) => (
                     <React.Fragment key={key}>
                       <dt className="text-sm font-medium text-gray-500">
@@ -168,7 +168,6 @@ export default function NorfDetail({ params }) {
                     zoom: { enabled: false },
                     toolbar: { show: false }
                   },
-                  title: { text: 'Conservation Scores', align: 'left' },
                   xaxis: {
                     title: { text: 'Position' },
                     labels: {
